@@ -1,0 +1,26 @@
+
+from collections import Counter
+
+logs = [
+    "INFO: Application started",
+    "ERROR: Database connection failed",
+    "WARNING: High memory usage",
+    "INFO: User logged in",
+    "ERROR: API request failed",
+    "INFO: Application stopped",
+    "ERROR: Database connection failed"
+]
+
+log_counts = Counter()
+
+for log in logs:
+    level = log.split(":")[0]
+    log_counts[level] += 1
+
+print("===== LOG ANALYSIS REPORT =====")
+
+for level, count in log_counts.items():
+    print(f"{level}: {count}")
+
+print("\nTotal log entries:", len(logs))
+print("Total errors:", log_counts["ERROR"])
