@@ -1,0 +1,29 @@
+
+import pandas as pd
+
+data = {
+    "Name": ["Alice", "Bob", "Alice", "David", None],
+    "Age": [25, 30, 25, None, 28],
+    "Salary": [50000, 60000, 50000, 75000, 55000]
+}
+
+df = pd.DataFrame(data)
+
+print("Original Data:")
+print(df)
+
+# Remove duplicate records
+df = df.drop_duplicates()
+
+# Fill missing values
+df["Name"] = df["Name"].fillna("Unknown")
+df["Age"] = df["Age"].fillna(df["Age"].median())
+
+# Convert data types
+df["Age"] = df["Age"].astype(int)
+
+print("\nCleaned Data:")
+print(df)
+
+df.to_csv("cleaned_data.csv", index=False)
+print("\nCleaned data saved successfully!")
