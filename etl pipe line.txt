@@ -1,0 +1,13 @@
+import pandas as pd
+
+df = pd.DataFrame({
+    "name": ["Ravi", "Priya", "John"],
+    "salary": [50000, 60000, 45000]
+})
+
+df = df.drop_duplicates()
+df["salary"] = df["salary"].fillna(0)
+
+df.to_csv("cleaned_data.csv", index=False)
+
+print("Data cleaned successfully!")
